@@ -12,7 +12,6 @@
     <input type="hidden" name="name" value="{{ $product->name }}">
     <input type="hidden" name="price" value="{{ $product->price }}">
 
-
     <button type="submit">Add to cart</button>
 </form>
 @endforeach

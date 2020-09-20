@@ -15,12 +15,26 @@
 <form action="{{ route('cart.destroy', $item->rowId) }}" method="POST">
     @csrf
     @method('DELETE')
+
     <button type="submit">Remove</button>
 </form>
 @endforeach
+<div>
+    Subtotal 
+    {{presentPrice(Cart::subtotal())}}
+</div>
+<div>
+    Tax
+    {{ presentPrice(Cart::tax()) }}
+</div>
+<div>
+    Total
+    {{ presentPrice(Cart::total()) }}
+</div>
 
 @else
-    No items in cart!
+No items in cart!
+<a href="{{ route('shop.index') }}">Continue shopping</a>
 @endif
 
 @if (count($errors) > 0)
