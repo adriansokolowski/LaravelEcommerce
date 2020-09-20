@@ -47,7 +47,21 @@ No items in cart!
 <h1>{{ Cart::instance('saveForLater')->count() }} items Saved For Later</h1>
 
 @foreach(Cart::instance('saveForLater')->content() as $item)
-    <div>{{ $item->name }}</div>
+<div>{{ $item->model->name }}</div>
+<div>{{ $item->model->details }}</div>
+<div>{{ $item->model->presentPrice() }}</div>
+<a href="{{ route('shop.show', $item->model->slug) }}"><img width="100" src="{{ asset('img/products/product.jpg') }}"></img></a>
+<form action="{{ route('saveForLater.destroy', $item->rowId) }}" method="POST">
+    @csrf
+    @method('DELETE')
+
+    <button type="submit">Remove</button>
+</form>
+<form action="{{ route('saveForLater.switchToCart', $item->rowId) }}" method="POST">
+    @csrf
+
+    <button type="submit">Move to cart</button>
+</form>
 @endforeach
 
 @else
