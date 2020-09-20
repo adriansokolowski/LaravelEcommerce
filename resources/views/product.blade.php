@@ -5,4 +5,6 @@
 {{ $product->presentPrice() }} <br>
 {{ $product->details }} <br>
 {{ $product->description }} <br>
+<hr>
+@include('partials.might-like');
 @endsection
