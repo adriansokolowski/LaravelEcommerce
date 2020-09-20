@@ -10,8 +10,13 @@
 @foreach(Cart::content() as $item)
 <div>{{ $item->model->name }}</div>
 <div>{{ $item->model->details }}</div>
-
+<div>{{ $item->model->presentPrice() }}</div>
 <a href="{{ route('shop.show', $item->model->slug) }}"><img width="100" src="{{ asset('img/products/product.jpg') }}"></img></a>
+<form action="{{ route('cart.destroy', $item->rowId) }}" method="POST">
+    @csrf
+    @method('DELETE')
+    <button type="submit">Remove</button>
+</form>
 @endforeach
 
 @else
