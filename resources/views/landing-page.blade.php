@@ -1,23 +1,10 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Laravel eCommerce</title>
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
-
-<body>
-    @foreach ($products as $product)
-    <a href="{{ route('shop.show', $product->slug) }}">{{ $product->name }}</a> <br>
-    {{ $product->presentPrice() }} <br>
-    {{ $product->description }} <br>
-    {{ $product->details }} <br>
-    @endforeach
-</body>
-
-</html>
+@extends('layouts.app')
+@section('content')
+@foreach ($products as $product)
+<img width="100" src="{{ asset('img/products/product.jpg') }}" />
+<a href="{{ route('shop.show', $product->slug) }}">{{ $product->name }}</a> <br>
+{{ $product->presentPrice() }} <br>
+{{ $product->description }} <br>
+{{ $product->details }} <br>
+@endforeach
+@endsection
