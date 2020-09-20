@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    @include('partials.nav');
+    @include('partials.nav')
 
     @yield('content')
 </body>

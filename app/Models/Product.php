@@ -13,4 +13,9 @@ class Product extends Model
     {
         return '$' .number_format($this->price, 2);
     }
+
+    public function scopemightAlsoLike($query)
+    {
+        return $query->inRandomOrder()->take(4);
+    }
 }
