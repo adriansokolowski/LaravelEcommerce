@@ -18,6 +18,12 @@
 
     <button type="submit">Remove</button>
 </form>
+<form action="{{ route('cart.switchToSaveForLater', $item->rowId) }}" method="POST">
+    @csrf
+
+    <button type="submit">Save for later</button>
+</form>
+
 @endforeach
 <div>
     Subtotal 
@@ -36,6 +42,18 @@
 No items in cart!
 <a href="{{ route('shop.index') }}">Continue shopping</a>
 @endif
+
+@if (Cart::instance('saveForLater')->count() > 0)
+<h1>{{ Cart::instance('saveForLater')->count() }} items Saved For Later</h1>
+
+@foreach(Cart::instance('saveForLater')->content() as $item)
+    <div>{{ $item->name }}</div>
+@endforeach
+
+@else
+    <div>You have no items saved for later</div>
+@endif
+<hr>
 
 @if (count($errors) > 0)
 
