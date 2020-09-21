@@ -69,6 +69,9 @@ No items in cart!
 @endif
 <hr>
 
+<div><a href="{{ route('shop.index') }}">Continue shopping</a></div>
+<div><a href="{{ route('checkout.index') }}">Checkout</a></div>
+
 @if (count($errors) > 0)
 
 @foreach($errors->all as $error)
