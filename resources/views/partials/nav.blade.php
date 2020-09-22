@@ -1,8 +1,8 @@
-<nav class="bg-gray-700 text-white shadow">
-  <div class="container mx-auto px-6 py-3 md:flex md:justify-between md:items-center">
+<nav class="bg-gray-900 text-gray-100 shadow">
+  <div class="container mx-auto py-3 md:flex md:justify-between md:items-center">
     <div class="flex justify-between items-center">
       <div>
-        <a class="text-white text-xl font-bold md:text-2xl hover:text-gray-100" href="/">Brand</a>
+        <a class="text-white text-xl font-bold md:text-2xl hover:text-gray-300" href="/">Brand</a>
       </div>
 
       <!-- Mobile menu button -->
@@ -18,7 +18,6 @@
     <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
     <div class="md:flex items-center">
       <div class="flex flex-col md:flex-row md:mx-6">
-        <a class="my-1 text-sm text-white font-medium hover:text-gray-200 md:mx-4 md:my-0" href="{{ route('shop.index') }}">Strona Główna</a>
         <a class="my-1 text-sm text-white font-medium hover:text-gray-200 md:mx-4 md:my-0" href="{{ route('shop.index') }}">Produkty</a>
         <a class="my-1 text-sm text-white font-medium hover:text-gray-200 md:mx-4 md:my-0" href="{{ route('shop.index') }}">Kontakt</a>
         <a class="my-1 text-sm text-white font-medium hover:text-gray-200 md:mx-4 md:my-0" href="{{ route('shop.index') }}">O nas</a>
@@ -28,12 +27,30 @@
         <div slot="icon" class="relative">
           <div class="absolute text-xs rounded-full -mt-1 -mr-2 px-1 font-bold top-0 right-0 bg-red-700 text-white">{{ Cart::instance('default')->count() }}</div>
           <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart w-6 h-6 mt-2">
-            <circle cx="9" cy="21" r="1"></circle>
-            <circle cx="20" cy="21" r="1"></circle>
-            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            <path clip-rule="evenodd" d="M4 1L1 5v14a2 2 0 002 2h14a2 2 0 002-2V5l-3-4H4z" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M1 5h18M14 9a4 4 0 01-8 0" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </div>
       </a>
     </div>
+  </div>
+</nav>
+<nav class="bg-red-700 text-sm text-red-100 font-bold py-3 mb-4" aria-label="Breadcrumb">
+  <div class="container mx-auto">
+    <ol class="list-none p-0 inline-flex">
+      <li class="flex items-center">
+        <a href="/">Strona Główna</a>
+        <svg class="fill-current w-3 h-3 mx-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+          <path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z" /></svg>
+      </li>
+      <li class="flex items-center">
+        <a href="#">Produkty</a>
+        <svg class="fill-current w-3 h-3 mx-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+          <path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z" /></svg>
+      </li>
+      <li>
+        <a href="#" class="text-red-200" aria-current="page">Koszyk</a>
+      </li>
+    </ol>
   </div>
 </nav>
