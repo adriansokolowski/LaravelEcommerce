@@ -38,8 +38,6 @@
 
 <script>
     (function() {
-
-
         // Create a Stripe client.
         var stripe = Stripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
