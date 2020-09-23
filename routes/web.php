@@ -8,13 +8,13 @@ use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
-Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
-Route::get('/shop/{product}', [ShopController::class, 'show'])->name('shop.show');
-Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
-Route::delete('/cart/{product}', [CartController::class, 'destroy'])->name('cart.destroy');
-Route::delete('/cart/', [CartController::class, 'destroyAll'])->name('cart.destroyall');
-Route::post('/cart/switchToSaveForLater/{product}', [CartController::class, 'switchToSaveForLater'])->name('cart.switchToSaveForLater');
+Route::get('/sklep', [ShopController::class, 'index'])->name('shop.index');
+Route::get('/sklep/{product}', [ShopController::class, 'show'])->name('shop.show');
+Route::get('/koszyk', [CartController::class, 'index'])->name('cart.index');
+Route::post('/koszyk', [CartController::class, 'store'])->name('cart.store');
+Route::delete('/koszyk/{product}', [CartController::class, 'destroy'])->name('cart.destroy');
+Route::delete('/koszyk/', [CartController::class, 'destroyAll'])->name('cart.destroyall');
+Route::post('/koszyk/switchToSaveForLater/{product}', [CartController::class, 'switchToSaveForLater'])->name('cart.switchToSaveForLater');
 
 Route::delete('/saveForLater/{product}', [SaveForLaterController::class, 'destroy'])->name('saveForLater.destroy');
 Route::post('/saveForLater/switchToCart/{product}', [SaveForLaterController::class, 'switchToCart'])->name('saveForLater.switchToCart');

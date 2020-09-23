@@ -108,7 +108,7 @@ class CartController extends Controller
     {
         Cart::destroy();
 
-        return back()->with('success_message', 'Wszystkie produkty usunięte z koszyka');
+        return back();
     }
 
     /**

@@ -18,9 +18,9 @@
     <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
     <div class="md:flex items-center">
       <div class="flex flex-col md:flex-row md:mx-6">
-        <a class="my-1 text-sm text-white font-medium hover:text-gray-200 md:mx-4 md:my-0" href="{{ route('shop.index') }}">Produkty</a>
-        <a class="my-1 text-sm text-white font-medium hover:text-gray-200 md:mx-4 md:my-0" href="{{ route('shop.index') }}">Kontakt</a>
-        <a class="my-1 text-sm text-white font-medium hover:text-gray-200 md:mx-4 md:my-0" href="{{ route('shop.index') }}">O nas</a>
+      <a href="{{ route('shop.index') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-red-100 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Produkty</a>
+      <a href="{{ route('shop.index') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-red-100 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Kontakt</a>
+      <a href="{{ route('shop.index') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-red-100 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">O nas</a>
       </div>
 
       <a href="{{ route('cart.index') }}">
@@ -35,7 +35,7 @@
     </div>
   </div>
 </nav>
-<nav class="bg-red-700 text-sm text-red-100 font-bold py-3 mb-4" aria-label="Breadcrumb">
+<nav class="bg-green-500 text-sm text-green-100 font-bold py-3 mb-4" aria-label="Breadcrumb">
   <div class="container mx-auto">
     <ol class="list-none p-0 inline-flex">
       <li class="flex items-center">
@@ -49,7 +49,7 @@
           <path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z" /></svg>
       </li>
       <li>
-        <a href="#" class="text-red-200" aria-current="page">Koszyk</a>
+        <a href="#" class="text-green-200" aria-current="page">Koszyk</a>
       </li>
     </ol>
   </div>

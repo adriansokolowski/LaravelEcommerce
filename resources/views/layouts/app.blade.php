@@ -10,7 +10,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
-<body>
+<body class="bg-gray-200">
     @include('partials.nav')
     <div class="container mx-auto">
         @yield('content')

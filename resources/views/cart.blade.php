@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('content')
 <!-- Two columns -->
+@if (Cart::count() > 0)
+
 <div class="flex mb-4">
     <div class="w-4/6 p-4">
         @if (session()->has('success_message'))
@@ -20,7 +22,7 @@
                 @csrf
                 @method('DELETE')
 
-                <button type="submit" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+                <button type="submit" class="bg-red-500 hover:bg-red-600 text-green-100 font-bold py-2 px-4 rounded inline-flex items-center">
                     <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                         <path d="M8 7v12h8V7H8zM7 6h10v14H7V6z M10 5v1h4V5h-4zM9 4h6v3H9V4z M10 9h1v7h-1zM13 9h1v7h-1zM6 6h12v1H6z" /></svg>
                     <span>Wyczyść koszyk</span>
@@ -28,7 +30,7 @@
             </form>
         </div>
         @foreach(Cart::content() as $item)
-        <div class="flex border-2 justify-between items-center bg-gray-200">
+        <div class="flex border-2 justify-between items-center bg-white">
             <div>
                 <div class="flex items-center px-4 py-2 m-2">
                     <img class="object-contain h-12" src="{{ asset('img/products/product.jpg') }}"></img>
@@ -39,13 +41,13 @@
                 <div class="flex px-4 py-2 m-2">
                     {{ $item->model->presentPrice() }}
                     <div>
-                        <input type="number" value="2" class="font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black">
+                        <input type="number" value="2" class="w-12 md:ml-4 font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black">
                     </div>
                     <form action="{{ route('cart.destroy', $item->rowId) }}" method="POST">
                         @csrf
                         @method('DELETE')
 
-                        <button type="submit" class="text-gray-700 md:ml-4">
+                        <button type="submit" class="text-red-500">
                             <svg class="fill-current h-6 w-6" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                 <title>Close</title>
                                 <path d="M8 7v12h8V7H8zM7 6h10v14H7V6z M10 5v1h4V5h-4zM9 4h6v3H9V4z M10 9h1v7h-1zM13 9h1v7h-1zM6 6h12v1H6z" />
@@ -56,6 +58,17 @@
             </div>
         </div>
         @endforeach
+        <div class="ml-auto w-2/6">
+            <p class="text-xl text-right py-4">Posiadasz kod rabatowy?</p>
+            <form class="w-full max-w-sm">
+                <div class="flex bg-white items-center border-2 p-5">
+                    <input class="appearance-none border-2 bg-transparent w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Kod rabatowy..." aria-label="Full name">
+                    <button class="flex-shrink-0 bg-green-500 hover:bg-green-700 border hover:border-green-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">
+                        Dodaj
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
     <div class="w-2/6 p-4">
         <div class="p-4">
@@ -94,6 +107,17 @@
         </div>
     </div>
 </div>
+@else
+<div class="text-center">
+    <h1>Twój koszyk jest pusty</h1>
+
+    <a href="{{ route('shop.index') }}">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+            Wróć do zakupów
+        </button>
+    </a>
+</div>
+@endif
 <!-- @if (session()->has('success_message'))
 {{ session()->get('success_message') }}
 @endif
