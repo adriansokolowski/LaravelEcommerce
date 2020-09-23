@@ -21241,17 +21241,13 @@ video {
 
 .StripeElement {
   box-sizing: border-box;
-  height: 40px;
-  padding: 10px 12px;
-  border: 1px solid transparent;
-  border-radius: 4px;
+  padding: 16px 16px;
+  border: 1px solid #ccc;
   background-color: white;
-  box-shadow: 0 1px 3px 0 #e6ebf1;
-  transition: box-shadow 150ms ease;
 }
 
 .StripeElement--focus {
-  box-shadow: 0 1px 3px 0 #cfd7df;
+  /* box-shadow: 0 1px 3px 0 #cfd7df; */
 }
 
 .StripeElement--invalid {
@@ -21260,6 +21256,10 @@ video {
 
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
+}
+
+#card-errors {
+  color: #fa755a;
 }
 
 @media (min-width: 640px) {

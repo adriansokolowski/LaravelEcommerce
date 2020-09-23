@@ -96,6 +96,14 @@
                     {{ presentPrice(Cart::total()) }}
                 </div>
             </div>
+            <a href="{{ route('shop.index') }}">
+                <button class="flex justify-center w-full px-10 py-3 mt-6 font-medium text-white uppercase bg-blue-600 rounded-full shadow item-center hover:bg-blue-700 focus:shadow-outline focus:outline-none">
+                    <svg aria-hidden="true" data-prefix="far" data-icon="credit-card" class="w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                        <path fill="currentColor" d="M145.188,238.575l215.5-215.5c5.3-5.3,5.3-13.8,0-19.1s-13.8-5.3-19.1,0l-225.1,225.1c-5.3,5.3-5.3,13.8,0,19.1l225.1,225
+		c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1L145.188,238.575z" /></svg>
+                    <span class="ml-2 mt-5px">Kontynuuj zakupy</span>
+                </button>
+            </a>
             <a href="{{ route('checkout.index') }}">
                 <button class="flex justify-center w-full px-10 py-3 mt-6 font-medium text-white uppercase bg-green-600 rounded-full shadow item-center hover:bg-green-700 focus:shadow-outline focus:outline-none">
                     <span class="ml-2 mt-5px">Przejdź do dostawy</span>

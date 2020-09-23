@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use Cart;
+use Cartalyst\Stripe\Laravel\Facades\Stripe;
+use Cartalyst\Stripe\Exception\CardErrorException;
 
 use Illuminate\Http\Request;
 
@@ -34,7 +37,24 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $charge = Stripe::charges()->create([
+                'amount' => Cart::total() / 100,
+                'currency' => 'CAD',
+                'source' => $request->stripeToken,
+                'description' => 'Order',
+                'receipt_email' => $request->email,
+                'metadata' => [
+                    //'contents' => $contents,
+                    //'quantity' => Cart::instance('default')->count()
+                ]
+            ]);
+
+            return back()->with('success_message', 'Thank you your payment accepted!');
+
+        } catch (Exception $e) {
+
+        }
     }
 
     /**
