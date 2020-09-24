@@ -106,7 +106,7 @@ class CartController extends Controller
      */
     public function destroyAll()
     {
-        Cart::destroy();
+        Cart::instance('default')->destroy();
 
         return back();
     }

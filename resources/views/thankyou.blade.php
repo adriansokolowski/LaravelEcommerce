@@ -1,0 +1,1 @@
+Twoja płatność została zrealizowana!

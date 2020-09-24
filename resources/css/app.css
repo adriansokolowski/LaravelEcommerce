@@ -27,7 +27,50 @@
     background-color: #fefde5 !important;
   }
 
-
   #card-errors {
     color: #fa755a;
+  }  
+
+  span {
+    display: inline-block;
+    transition: transform 200ms;
+  }
+  
+  button:hover .lewo {
+    transform: translateX(-10px);
+    animation: wprawol
+  }
+  
+  
+  button:hover .prawo {
+    transform: translateX(10px);
+    animation: wprawo 500ms infinite alternate;
+  }
+  
+  @keyframes wprawo {
+    from {
+      transform: translateX(0px)
+    } 
+    to {
+      transform: translateX(10px)
+    }
+  }
+
+  button:hover .text2 {
+    transform: translateX(10px);
+    animation: wlewo
+  }
+  
+  button:hover .arrow2 {
+    transform: translateX(10px);
+    animation: wlewo 500ms infinite alternate;
+  }
+  
+  @keyframes wlewo {
+    from {
+      transform: translateX(0px)
+    } 
+    to {
+      transform: translateX(-10px)
+    }
   }

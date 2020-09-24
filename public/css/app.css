@@ -21262,6 +21262,75 @@ video {
   color: #fa755a;
 }
 
+span {
+  display: inline-block;
+  transition: transform 200ms;
+}
+
+button:hover .lewo {
+  transform: translateX(-10px);
+  -webkit-animation: wprawol;
+          animation: wprawol
+}
+
+button:hover .prawo {
+  transform: translateX(10px);
+  -webkit-animation: wprawo 500ms infinite alternate;
+          animation: wprawo 500ms infinite alternate;
+}
+
+@-webkit-keyframes wprawo {
+  from {
+    transform: translateX(0px)
+  }
+
+  to {
+    transform: translateX(10px)
+  }
+}
+
+@keyframes wprawo {
+  from {
+    transform: translateX(0px)
+  }
+
+  to {
+    transform: translateX(10px)
+  }
+}
+
+button:hover .text2 {
+  transform: translateX(10px);
+  -webkit-animation: wlewo;
+          animation: wlewo
+}
+
+button:hover .arrow2 {
+  transform: translateX(10px);
+  -webkit-animation: wlewo 500ms infinite alternate;
+          animation: wlewo 500ms infinite alternate;
+}
+
+@-webkit-keyframes wlewo {
+  from {
+    transform: translateX(0px)
+  }
+
+  to {
+    transform: translateX(-10px)
+  }
+}
+
+@keyframes wlewo {
+  from {
+    transform: translateX(0px)
+  }
+
+  to {
+    transform: translateX(-10px)
+  }
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
