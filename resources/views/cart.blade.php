@@ -2,7 +2,6 @@
 @section('content')
 <!-- Two columns -->
 @if (Cart::count() > 0)
-
 <div class="flex mb-4">
     <div class="w-4/6 p-4">
         @if (session()->has('success_message'))
@@ -39,9 +38,9 @@
             </div>
             <div>
                 <div class="flex px-4 py-2 m-2">
-                    {{ $item->model->presentPrice() }}
+                    {{ presentPrice($item->subtotal )}}
                     <div>
-                        <input type="number" value="2" class="w-12 md:ml-4 font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black">
+                        <input type="number" data-id="{{ $item->rowId }}" value="{{ $item->qty }}" class="quantity w-12 md:ml-4 font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black">
                     </div>
                     <form action="{{ route('cart.destroy', $item->rowId) }}" method="POST">
                         @csrf
@@ -210,4 +209,31 @@ No items in cart!
 @endif
 <hr>
 @include('partials.might-like'); -->
+@endsection
+
+@section('extra-js')
+<script src="{{ asset('js/app.js') }}"></script>
+
+<script>
+    (function() {
+        const className = document.querySelectorAll('.quantity');
+
+        Array.from(className).forEach(function(element) {
+            element.addEventListener('change', function() {
+                const id = element.getAttribute('data-id');
+                axios.patch(`/koszyk/${id}`, {
+                        quantity: this.value
+                    })
+                    .then(function(response) {
+                        window.location.href = '{{ route('cart.index') }}';
+                    })
+                    .catch(function(error) {
+                        console.log(error);
+                        window.location.href = '{{ route('cart.index') }}';
+
+                    });
+            })
+        })
+    })();
+</script>
 @endsection

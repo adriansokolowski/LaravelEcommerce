@@ -12,18 +12,19 @@
     </div>
     @endif
 </div>
-
-@if (Cart::count() > 0)
+@if (Cart::count()> 0)
 
 <div class="flex mb-4">
     <div class="w-4/6 p-4">
-        <form class="w-full">
+    <div class="bg-white p-4">
+        <form action="{{ route('checkout.store') }}" method="POST" id="payment-form" class="w-full">
+            @csrf
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                         Imię
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane">
+                    <input value="{{ old('name') }}" class="bg-white appearance-none block w-full text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane">
                     <p class="text-red-500 text-xs italic">Please fill out this field.</p>
                 </div>
                 <div class="w-full md:w-1/2 px-3">
@@ -78,11 +79,7 @@
                     <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" type="text" placeholder="90210">
                 </div>
             </div>
-        </form>
-        <hr>
-        <form action="{{ route('checkout.store') }}" method="POST" id="payment-form">
-            @csrf
-
+            <hr>
             <input id="name_on_card" name="name_on_card"></input>
             <input id="address" name="address"></input>
             <input id="city" name="city"></input>
@@ -101,8 +98,9 @@
                 <div id="card-errors" role="alert"></div>
             </div>
 
-            <button>Submit Payment</button>
+            <button class="bg-blue-500 text-white font-bold py-2 px-4 rounded" id="complete-order">Submit Payment</button>
         </form>
+        </div>
     </div>
     <div class="w-2/6 p-4">
         <h1>Twoje zamówienie</h1>
@@ -118,7 +116,7 @@
                 <div class="flex px-4 py-2 m-2">
                     {{ $item->model->presentPrice() }}
                     <div>
-                        <input disabled type="number" value="2" class="w-12 md:ml-4 font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black">
+                        <input disabled type="number" value="{{ $item->qty }}" class="w-12 md:ml-4 font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black">
                     </div>
                 </div>
             </div>
@@ -214,6 +212,8 @@
         form.addEventListener('submit', function(event) {
             event.preventDefault();
 
+            document.getElementById('complete-order').classList.add("cursor-not-allowed", "opacity-50")
+
             const options = {
                 name: document.getElementById('name_on_card').value,
                 address_line1: document.getElementById('address').value,
@@ -227,6 +227,9 @@
                     // Inform the user if there was an error.
                     var errorElement = document.getElementById('card-errors');
                     errorElement.textContent = result.error.message;
+
+                    document.getElementById('complete-order').classList.remove("cursor-not-allowed", "opacity-50")
+
                 } else {
                     // Send the token to your server.
                     stripeTokenHandler(result.token);

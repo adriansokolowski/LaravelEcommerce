@@ -35,7 +35,7 @@
     </div>
   </div>
 </nav>
-<nav class="bg-green-500 text-sm text-green-100 font-bold py-3 mb-4" aria-label="Breadcrumb">
+<nav class="bg-green-500 text-sm text-green-100 font-bold py-3" aria-label="Breadcrumb">
   <div class="container mx-auto">
     <ol class="list-none p-0 inline-flex">
       <li class="flex items-center">

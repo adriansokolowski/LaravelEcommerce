@@ -14,6 +14,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(CategoriesTableSeeder::class);
         Product::factory(20)->create();
+
+        $product = Product::find(1);
+        $product->categories()->attach(2);
     }
 }

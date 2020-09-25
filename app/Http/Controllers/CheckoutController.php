@@ -37,9 +37,9 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        $contents = Cart::content()->map(function($item){
-            return $item->model->slug.', '.$item->$qty;
-        })->values()->toJson();
+        //$contents = Cart::content()->map(function($item){
+        //    return $item->model->slug.', '.$item->$qty;
+        //})->values()->toJson();
 
 
         try {
@@ -50,8 +50,8 @@ class CheckoutController extends Controller
                 'description' => 'Order',
                 'receipt_email' => $request->email,
                 'metadata' => [
-                    'contents' => $contents,
-                    'quantity' => Cart::instance('default')->count()
+                    //'contents' => $contents,
+                    //'quantity' => Cart::instance('default')->count()
                 ]
             ]);
 

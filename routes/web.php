@@ -11,8 +11,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
 Route::get('/sklep', [ShopController::class, 'index'])->name('shop.index');
 Route::get('/sklep/{product}', [ShopController::class, 'show'])->name('shop.show');
+
 Route::get('/koszyk', [CartController::class, 'index'])->name('cart.index');
 Route::post('/koszyk', [CartController::class, 'store'])->name('cart.store');
+Route::patch('/koszyk/{product}', [CartController::class, 'update'])->name('cart.update');
 Route::delete('/koszyk/{product}', [CartController::class, 'destroy'])->name('cart.destroy');
 Route::delete('/koszyk/', [CartController::class, 'destroyAll'])->name('cart.destroyall');
 Route::post('/koszyk/switchToSaveForLater/{product}', [CartController::class, 'switchToSaveForLater'])->name('cart.switchToSaveForLater');

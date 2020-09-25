@@ -9,6 +9,11 @@ class Product extends Model
 {
     use HasFactory;
 
+    public function categories()
+    {
+        return $this->belongsToMany('App\Models\Category');
+    }
+
     public function presentPrice()
     {
         return '$' .number_format($this->price, 2);
